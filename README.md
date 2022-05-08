@@ -5,43 +5,31 @@
 Authors:  [Chris Helmerson](https://github.com/chris161011), [Richard Hinds](https://github.com/RH3421), and [Olamide Olayinka](https://github.com/olamide-h)
 
 ## Business Problem
-The stakeholder is Flatiron Communications. The stakeholder has approached us to find out how they can reduce churn with their company. So we are tasked with 
-building a classifier to predict whether a customer will ("soon") stop doing business with our stakeholder. Optimize to reduce amount of money lost due to churn. This is a binary classification problem.
+Currently, there is massive competition between 6 major cellular providers. “Churn”, a jargon term, refers to the lost of previously subscribed customers. Churn is a major problem within the telecommunications industry with an average churn rate of 22% per year. Additionally, new cellular customers are hard to come by with customer acquisition costs continuing to soar. Approximately, 9 out of 10 customers have churned in the last 5 years with about 50% of them unsubscribing while maintaining a balance on their bill. Given that nearly 1 in 4 customers are churning each year, retaining  existing customers has never been more important.
 
-So what is the layout of the cellular market and what is “Churn”? There is currently massive competition between 6 major cellular providers. “Churn” is a jargon term that effectively means customer turnover. There is a major problem with churn within the industry as new cellular customers are arriving at an all time low and with an average Churn Rate 22% per year.  9 out of 10 customers have churned in the last 5 years with about 1/2 of that Churn being attributed to nonpayment. Given that 1 in 4 customers are churning each year, retaining those existing customers has never been more important.
+Flatiron Communications, a multinational telecommunications company, has approached our team to find out how they can reduce churn. Thus, we are tasked with generating a binary classification model to identify customers at risk of churning from Flatiron Communications, our stakeholder. We will optimize our model to reduce amount of money lost due to churn.
 
 ## Data and Preparation
-Our data for this project was sourced from kaggle : https://www.kaggle.com/jpacse/datasets-for-churn-telecom. The data set contained 58 columns and a totoal of 51,047 entries  with our target column being churn. After importing the data set, we continued with data cleaning and filtering. We dropped the null values in the dataset as well as drop columns that did not fall within our business problem. Futhermore, we converted the 'Service Area' column to Zipcode. In additon to converting our cartergorical columns to numeric values to allow for modeling going forward. This cleaning resulted in us having a total of 49,752 entries with 51 columns. 35,507 entries classified as customers who did not churn, while 14,245 entries classified as customers who did churn. 
-
+Our dataset for this project was sourced from kaggle : https://www.kaggle.com/jpacse/datasets-for-churn-telecom. Exploratory data analysis (EDA) revealed a dataset containing 58 features and 51,047 entries, with our target variable being a binary classification of churn. After further EDA, we began the process of data cleaning and filtering. We dropped the null values in the dataset as well as dropped columns that were not pertinent to the business problem. Futhermore, we converted the Service Area data to Zipcode. Additionally, we converted our cartergorical values to numeric values to allow for modeling going forward. At the end of the cleaning process we had a total of 49,752 entries with 51 features. Customers who did not churn numbered 35,507 while 14,245 entries were classified as customers who did churn. 
 
 ### Methods
-Our dataset comes from an anonymous top 6 cellular provider and contains information on over 50,000 customers, collected through 2014. As stated previously, about half of churn is due to nonpayment, though our dataset only contains data of those who churned voluntarily. 
-We used Scikit Learn as well as Sci-py to validate that our model. 
-
+Our dataset comes from an anonymous top 6 cellular provider and contains information on over 50,000 customers with data collected through 2014. Though nearly 50% of churn is due to nonpayment, our dataset only contained data of those who churned for reasons other than nonpayment. Both Scikit-Learn and SciPy were used to contruct and run our model. 
 
 ## Modeling
-We ran several models while optimizing hyperparameters throughout. We started off with a dummy baseline model to compare our next models to.  We then went on to running a decision tree to help identify importance features for future model iterations. We procceded to run a logistic regression model as well as a KNN model. In addition, we also ran a GridSearchCV on KNN and ran another KNN model with the suggested hyperparameters of the GridSearchCV. Our final model was a DecisionTreeClassifier optimized with GridSearchCV. 
+We ran several models while optimizing hyperparameters throughout. We started off with a baseline DummyClassifier model.  We then built a DecisionTreeClassifier to identify features of importance for future model iterations. Next, we ran a LogisticRegression model as well as a KNN model. Our final model was a DecisionTreeClassifier optimized with GridSearchCV. Recall was used as our primary evaluation metric. Evaluating for recall worked best when pertaining to the business problem given that average revenue per user (APRU) was nearly $60 and customer retention costs (CRC) were assumed to be negligible. Using recall allowed us to optimize to reduce false negatives or not identifying customers that would churn. 
 
-
-### Evaluation
-Our models were evaluated for recall. Testing for recall worked best when pertaining to the business problem given that average revenue per user (APRU) was nearly $60 and customer retention costs (CRC) were assumed to be negligible. As it would show the rate of our model predictive churn vs false negatives. Of the models we ran, it appears that a DecisionTreeClassifier optimized with GridSearchCV provided us with the best recall score, of .912 or 91.2%!
-
+### Results
+The DecisionTreeClassifier optimized with GridSearchCV proved to have the best recall score: 91.2%!
 
 ![image](https://i.imgur.com/57gFNhT.png)
 
-
-
-
-
-## Conclusions 
-
-We identified the 3 most impactful predictors of churn from our analysis:
+From the LogisticRegression model we identified the 3 most impactful predictors of churn:
 
   1. Customers are 1.45x times as likely to churn for every day that they hold the same cell phone.
   2. Customers are 1.23x times as likely to churn for every additional subscriber added onto a plan.
   3. Customers are 1.16x times as likely to churn for every 1% increase in charges.
 
-## Recommendations
+## Conclusions & Recommendations
 
 Based on our analyses we recommend our stakeholder implement 3 targeted approaches to reduce churn:
 
@@ -50,7 +38,7 @@ Based on our analyses we recommend our stakeholder implement 3 targeted approach
   3. Control customer charges by avoiding increasing fees on customers bills. 
 
 ## Next Steps
-In the near future, we plan to develop a team tasked with proactively addressing churn. This team would be tasked with managing all predictors that can be seen to contribute to churn. Furthermore, we plan to feature engineer our data towards regions. This would allow us to develop localized deals based on a customer's service area. This would come down to using zip code data as well state data.
+The next iterative step in this project is to segement customer data by region, using either zip code or state. This would allow us to develop a more focused model and generate specific recommendations are customer patterns likely vary by region. Given the high incidence of churn in general we also recommend investing in a dedicated team to proactively monitor and address dissatisfaction among customers with the potential to churn.
 
 ## For More Information
 View the full analysis via the [Jupyter Notebook](https://github.com/chris161011/P3_Project/blob/main/Main%20Notebook.ipynb).
