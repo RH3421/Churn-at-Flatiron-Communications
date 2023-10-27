@@ -2,8 +2,6 @@
 
 ![image](https://user-images.githubusercontent.com/96458808/157768617-494374d0-7b78-40cf-ac06-bb6bef64a0ff.png)
 
-Authors:  [Chris Helmerson](https://github.com/chris161011), [Richard Hinds](https://github.com/RH3421), and [Olamide Olayinka](https://github.com/olamide-h)
-
 ## Business Problem
 Currently, there is massive competition between 6 major cellular providers. “Churn”, a jargon term, refers to the lost of previously subscribed customers. Churn is a major problem within the telecommunications industry with an average churn rate of 22% per year. Additionally, new cellular customers are hard to come by with customer acquisition costs continuing to soar. Approximately, 9 out of 10 customers have churned in the last 5 years with about 50% of them unsubscribing while maintaining a balance on their bill. Given that nearly 1 in 4 customers are churning each year, retaining  existing customers has never been more important.
 
